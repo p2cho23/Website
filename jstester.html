@@ -1,0 +1,57 @@
+<html>
+<head>
+<script language = "JavaScript">
+
+var number = 0; //GLOBAL variable available anywhere in script
+var myList = [ "Anne", "Bob", "Cathy", "Doug" ];
+
+function tester()
+{
+   /*
+	var answer; //declare new LOCAL variable called answer
+    answer = confirm("Hello world"); // true or false is stored in answer       variable
+    answer = prompt ("What is your name?"); //String literal is between open/close quote marks
+    alert("Welcome to my site, "+answer);
+    
+
+    // = is ASSIGNMENT operator (right side is assigned to left side)
+    number = number - 1; //subtract one from number
+ 
+    // == test EQUALITY
+    if( number == 0)
+    {
+        alert ("Blastoff!")
+        number = 11;
+    }
+    //number = 12
+    else
+    {
+        alert(number);
+    }
+*/
+    // index of the first element is 0
+
+    alert (myList[number]);
+    number = number + 1;
+    if (number == 4) //Does number equal four?
+    {
+        number = 0;
+    }      
+    
+}
+
+</script>
+
+</head>
+<body bgcolor="C73933">
+<font color="white">
+<center> 
+<h1> JavaScript Tester </h1>
+
+<input type="button" value="Click Me" onClick="tester()">
+
+<h3> Click <a href="index.html"> here</a> to return Home <h3>
+
+</center>
+</body>
+</html>
