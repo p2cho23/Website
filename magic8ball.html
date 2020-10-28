@@ -1,0 +1,50 @@
+<html>
+<head>
+<script languague = "JavaScript">
+var answer = ["Absolutely","Possibly","This is soon to come","Not sure","Maybe", "Not likely", "Almost impossible", "Never", "Time will tell", "Hard to tell"];
+function random()
+{
+    var rand = -1;
+        
+    //alert(rand);
+    //create a random number between -10 and 10
+    //Add or sutract from rand to change the range
+    
+    rand = Math.random();//returns a random decimal between 0 (inclusive) and 1 (exclusive)
+    rand = Math.random() * 10; //0-10//Multiply Math.random() by the NUMBER OF OPTIONS//answer.length will multiply it by however many items are in the list
+    rand = Math.floor(rand); //running rand through math.floor, which truncates the decimal
+        
+    var solution = document.getElementById("answer")
+    var userq = document.getElementById("question")
+   // alert (userq.value.length);
+    
+    if(userq.value.length == 0) //user hasn't asked a question
+    {
+     solution.value = "Please ask a question"
+    }
+    else
+    {
+     solution.value = answer[rand]
+    }
+}
+
+</script>
+</head>
+<body background = "Images/pexels.jpeg"> 
+<center>
+<h1>Magic 8 Ball</h1>
+<img src="Images/magic8ball.jpg" width="300">
+<br/>
+<br/>
+<input id= "question" type = “text” size="80"/>
+<br/>
+<input type="button" value="Click here" onClick="random()"/>
+<br/>
+<input id= "answer" type = “text” size="80"/>
+<br/> <br/>
+Type your question into the top-most box and click the button for your future...
+<br/><br/>
+<p> Click <a href="index.html">here</a> to return Home </p>
+</center>
+</body>
+</html>
