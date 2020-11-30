@@ -1,0 +1,27 @@
+<html>
+<head>
+<script language="JavaScript">
+var counter = 0;
+var favFoods = ["poke", "mashed potatoes", "scallops", "ribeye", "tomatoes", "avocado toast", "french onion soup", "pistachio ice cream"];
+function start()
+{
+	var tbox = document.getElementById("display");
+	tbox.value = favFoods [counter];
+    counter = counter + 1 // or counter += 1 or counter ++
+    
+    var x = tbox.value; //store the current textbox value in a variable x
+    
+    var timer = setTimeout("start()", 1000)
+}
+
+</script>
+</head>
+<body>
+<center>
+<h1>Loop Test</h1>
+<input type="button" value="Click me" onClick="start()"/>
+<br/><br/>
+<input id="display" type="text" size="75"/>
+
+<body>
+</html>
