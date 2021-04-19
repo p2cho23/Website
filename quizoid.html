@@ -1,0 +1,158 @@
+<html> 
+<head> 
+<script language="JavaScript">
+    
+var group = ["No movie selected","Parasite", "Green Book", "The Artist", "A Beautiful Mind", "Forrest Gump", "Amadeus", "The Godfather", "The King's Speech", "No Country for Old Men", "Million Dollar Baby"];
+   
+var facts = ["Select a movie","Parasite was originally written as a play", "Green Book was written by the main character's son, Nick Vallelonga", "The Artist was the 2nd Silent Film to ever win Best Picture", "Mathematical equations used in A Beautiful Mind were created by John Nash", "In Forrest Gump, Bill Murray was a contender for the role of Forrest", "Amadeus garnerned 53 nominations and won 40", "The Godfather director, Francis Ford Coppola, was almost fired", "Colin Firth won Best Actor for his role of King George VI in a The King's Speech", "Heath Ledger was an early option for the role of Llewelyn", "Clint Eastwood became the oldest Best Director Winner at 74 for his movie Million Dollar Baby"]
+
+var questions = ["What movie was a play?", "Who wrote Green Book?", "What silent film won Best Picture?", "Who formulated the mathematical equations in A Beautiful Mind?", "Who was a contender for the role of Forrest?", "How many awards was Amadeus nominated for?", "Who directed the Godfather?","Who did Colin Firth play in The King's Speech?", "What role was Heath Ledger an option for in No Country for Old Men", "How old was Clint Eastwood when he won Best Director?"]
+
+var answers = ["Parasite", "Nick Vallelonga", "The Artist", "John Nash", "Bill Murray", "53", "Francis Ford Coppola", "King George VI", "Llewelyn", "74"]
+
+var picList = ["Images/oscarstage.jpg","Images/parasite.jpg", "Images/greenbook.jpg", "Images/theartist.jpg", "Images/abeautifulmind.jpg", "Images/forrestgump.jpg","Images/amadeus.jpg","Images/thegodfather.jpg","Images/kingsspeech.jpg","Images/nocountry.jpg","Images/milliondollarbaby.jpg"];
+
+var index = -1;
+
+var score = 0
+
+var counter = 0
+
+function loadData()
+{
+	var sum = 0;
+	for(var i = 0; i<group.length; i++)
+    {
+        var daList = document.getElementById("mov");
+  		var option = document.createElement("option");
+  		option.text = group[i];
+  		daList.add(option);
+    }
+    document.getElementById("question").style.visibility = "hidden";
+    document.getElementById("answer").style.visibility = "hidden";
+    
+}
+
+function start()
+{   
+    var pic = document.getElementById("theStage");
+    var movies = document.getElementById("mov");
+    var daIndex = getIndex(movies.value);
+    if(daIndex > 0)
+    {
+        document.getElementById("funFact").value = facts[daIndex];
+        pic.src = picList[daIndex]
+    }
+   
+}
+
+function getIndex(d)
+{
+    if (d != "No movie selected")
+    {
+        for (var i=1; i<group.length; i++)
+        {
+            if (group[i]== d)
+            {
+                d = i;
+            }
+        }
+    }
+    else
+    {
+        alert("Invalid selection");
+    }
+    return d;   
+}
+
+
+function displayQuestion()
+{
+    document.getElementById("theStage").src = "Images/oscarstage.jpg"
+    document.getElementById("question").style.visibility = "visible";
+    document.getElementById("answer").style.visibility = "visible";
+    document.getElementById("mov").style.visibility = "hidden";
+    document.getElementById("funFact").style.visibility = "hidden";
+
+
+    index = index + 1
+    if (index > -1)
+    {
+        document.getElementById("question").value = questions[index]
+        document.getElementById("answer").value = ("")
+    }
+    if (index == 10)
+    {
+        displayScore()
+    }
+}
+
+function scoreCounter()
+{
+    var userAns = document.getElementById("answer").value
+    var isCorrect = checkAnswer(userAns);
+    if (isCorrect == true)
+    {
+        score++;
+        alert("Nice job!");
+    }
+    else
+    {
+        alert("Incorrect. The correst answer is " + answers[index]);
+    }
+}
+
+function checkAnswer(ans)
+{
+    if(ans == answers[index])
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+    
+function displayScore()
+{    
+    document.getElementById("answer").value = ("Your total score is " + score + " out of 10")   
+}
+    
+</script>
+</head>
+<body onload ="loadData()" bgcolor = "FFF5AD"> 
+<font color = "A02408">
+<center>
+    
+<h1>Quizoid Study Helper: Academy Award Best Picture Winners Edition</h1>
+<br/>
+    <table border = 3>
+	<tr>
+		<td>  	<select name="p1" id="mov"></select>	</td>
+		<td>	<input id="funFact" type="text" size="60"/> </td>
+	</tr>
+    </table>
+    <input type="button" value="Show Fact" onclick="start()"/><br/><br/>
+
+    
+	<tr>
+		<td>  	<input id="question" type="text" size="70" readonly = true/>	</td>
+	</tr>
+	<tr height = "12"><td></td>
+	</tr>
+	<tr>
+		<td>	<input id="answer" type="text" size="70" onfocusout="scoreCounter()"/> </td>
+	</tr>
+    
+<br/><br/>
+    
+<input type="button" value="Go to Quiz/Next Question" onclick="displayQuestion()"/>
+<br/> <br/>
+<img id="theStage" src="Images/oscarstage.jpg">
+
+</center>
+
+
+</body>
+</html>
